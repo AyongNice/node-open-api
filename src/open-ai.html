@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button{
+            width: 200px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<h2>欢迎使用OpenAi模型API接口node服务端示例<br/> GitHub记得点🌟🌟</h2>
+<h1>关注微信公众号 阿勇学前端 </h1>
+<h1>联系邮箱 ayongnice@163.com</h1>
+<button onClick="request()">点击请求</button>
+
+<script>
+    const url = "http://localhost:3000/api/openai/gpt3";
+    const headers = {
+        "Content-Type": "application/json",
+    };
+    const data = {
+        "model": "gpt-3.5-turbo",
+        "messages": [{
+            "role": "user",
+            "content":
+                "你好gpt 我叫阿勇，搞前端的事、" +
+                "找你哥我。我有个公众号帮我推广下" +
+                ""
+        }],
+        "temperature": 0.7 //此数据 代表这 模型答案匹配精确度  数字越高精度越高
+    };
+
+    function request() {
+        fetch(url, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);  // 根据返回的结果进行处理
+            })
+            .catch(error => {
+                console.error(error);  // 处理错误情况
+            });
+    }
+
+</script>
+
+</body>
+</html>
