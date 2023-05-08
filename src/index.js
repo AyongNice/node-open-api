@@ -7,7 +7,14 @@ import bodyParser from 'body-parser';
 
 const API_KEY = ''; // 替换为您的 OpenAI API 密钥
 
-const proxy = 'http://127.0.0.1:7890'; // 代理地址
+
+/***
+*
+* 代理地址 ！！！！！！源码配置只适用于 本地计算机IP （就是你本地电脑科学上网的IP）
+*。国内的服务器部署 需要换成自己的服务器 nginx IP ,
+*。如果是国外服务器 部署 则不需要该配置， 
+*/
+const proxy = 'http://127.0.0.1:7890'; 
 const openAIurl = "https://api.openai.com/v1/chat/completions"; //openAi 地址
 const diyServeUrl = "/api/openai/gpt3"; //服务器地址
 const agent = new HttpsProxyAgent(proxy); // 创建代理，本地请求测试需要进行科学上网必须开启（前提条件），
@@ -34,7 +41,7 @@ app.post(diyServeUrl, async (req, res) => {
                 'Authorization': `Bearer ${API_KEY}`,
             },
             body: JSON.stringify(req.body),
-            agent: agent // 设置代理
+            agent: agent // 设置代理 如果是国外服务器则不需要改配置 必须删掉， 
         });
         // 解析响应数据为 JSON 格式
         const responseData = await response.json();
