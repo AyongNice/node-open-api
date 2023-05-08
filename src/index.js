@@ -11,8 +11,8 @@ const API_KEY = ''; // 替换为您的 OpenAI API 密钥
 /***
 *
 * 代理地址 ！！！！！！源码配置只适用于 本地计算机IP （就是你本地电脑科学上网的 系统代理IP）
-*。国内的服务器部署 需要换成自己的服务器 nginx IP ,
-*。如果是国外服务器 部署 则不需要该配置， 
+*  国内的服务器部署 需要换成自己的服务器内nginx 的 科学上网加速 IP,
+*。国外服务器部署  则不需要该配置 只需要在fetch方法请求中 删除agent参数 ， 
 */
 const proxy = 'http://127.0.0.1:7890'; 
 const openAIurl = "https://api.openai.com/v1/chat/completions"; //openAi 地址
